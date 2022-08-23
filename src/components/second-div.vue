@@ -29,6 +29,7 @@ export default {
     stopTimer: function () {
         clearInterval(this.timer)
         console.log(this.stopped)
+        this.$emit('end',this.stopped)
     },
   },
 };
