@@ -1,7 +1,8 @@
 <template>
   <h1>REACTION TIMER</h1>
   <button @click="start" :disabled="isStarted">start</button>
-  <divButton v-if="isStarted" :delay="delay" />
+  <divButton v-if="isStarted" :delay="delay" @end="timerEnded"/>
+  <p>Your Reaction Time {{something}} ms </p>
 </template>
 
 <script>
@@ -13,6 +14,7 @@ export default {
     return {
       isStarted: false,
       delay: null,
+      something: null, 
     };
   },
   components: {
@@ -23,6 +25,11 @@ export default {
       this.delay = 4000;
       this.isStarted = true;
     },
+
+    timerEnded: function(stopped){
+      this.something = stopped,
+      this.isStarted = false
+    }
 
   },
 };
